@@ -11,7 +11,10 @@ diffs.unshift(`../place30ex/start.png`);
 diffs.push(`../place30ex/end.png`);
 const diffCount = diffs.length;
 const padding = `${diffCount - 1}`.length;
-const centers = JSON.parse(await readFile(fileURLToPath(`${root}/r-place-atlas-2022/data/patches/super-bear-adventure.json`))).center;
+const centers = JSON.parse(await readFile(fileURLToPath(`${root}/r-place-atlas-2022/web/atlas.json`))).find((entry) => {
+	const found = entry.id === 636;
+	return found;
+}).center;
 const ranges = Object.keys(centers).map((key) => {
 	const split = key.split("-");
 	const start = Number(split[0]);
